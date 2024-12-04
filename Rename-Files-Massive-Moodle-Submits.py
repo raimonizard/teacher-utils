@@ -9,38 +9,56 @@ if(os.path.exists(directory) & os.path.isdir(directory)):
     choice = input("Would you like to modify moodle exported tasks files e.g. '*_237770_assignsubmission_file_' ? [y/n]: ")
 
     if choice == 'y':
+        res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{7}_assignsubmission_file', file)]
+        for file in res:
+            if(file):
+                print(file)
+                pattern = r'(?<!\d)_\d{7}_assignsubmission_file'
+                rename = ''
+                renamedFile = file.replace(re.findall(r"(?<!\d)_\d{7}_assignsubmission_file", file)[0],"")
+                os.rename(file,renamedFile)
+
         res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{6}_assignsubmission_file_', file)]
         for file in res:
             if(file):
                 print(file)
-                pattern = f'(?<!\d)_\d{6}_assignsubmission_file_'
+                pattern = r'(?<!\d)_\d{6}_assignsubmission_file_'
                 rename = ''
                 renamedFile = file.replace(re.findall(r"(?<!\d)_\d{6}_assignsubmission_file_", file)[0],"")
-                os.rename(file,renamedFile)
-                
-        res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{4}_assignsubmission_file_', file)]
-        for file in res:
-            if(file):
-                print(file)
-                pattern = f'(?<!\d)_\d{4}_assignsubmission_file_'
-                rename = ''
-                renamedFile = file.replace(re.findall(r"(?<!\d)_\d{4}_assignsubmission_file_", file)[0],"")
                 os.rename(file,renamedFile)
 
         res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{5}_assignsubmission_file_', file)]
         for file in res:
             if(file):
                 print(file)
-                pattern = f'(?<!\d)_\d{5}_assignsubmission_file_'
+                pattern = r'(?<!\d)_\d{5}_assignsubmission_file_'
                 rename = ''
                 renamedFile = file.replace(re.findall(r"(?<!\d)_\d{5}_assignsubmission_file_", file)[0],"")
+                os.rename(file,renamedFile)
+
+        res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{4}_assignsubmission_file_', file)]
+        for file in res:
+            if(file):
+                print(file)
+                pattern = r'(?<!\d)_\d{4}_assignsubmission_file_'
+                rename = ''
+                renamedFile = file.replace(re.findall(r"(?<!\d)_\d{4}_assignsubmission_file_", file)[0],"")
+                os.rename(file,renamedFile)
+
+        res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{7}_assignsubmission_onlinetext_', file)]
+        for file in res:
+            if(file):
+                print(file)
+                pattern = r'(?<!\d)_\d{7}_assignsubmission_onlinetext_'
+                rename = ''
+                renamedFile = file.replace(re.findall(r"(?<!\d)_\d{7}_assignsubmission_onlinetext_", file)[0],"_comentari")
                 os.rename(file,renamedFile)
 
         res = [file for file in os.listdir(directory) if re.search(r'(?<!\d)_\d{6}_assignsubmission_onlinetext_', file)]
         for file in res:
             if(file):
                 print(file)
-                pattern = f'(?<!\d)_\d{6}_assignsubmission_onlinetext_'
+                pattern = r'(?<!\d)_\d{6}_assignsubmission_onlinetext_'
                 rename = ''
                 renamedFile = file.replace(re.findall(r"(?<!\d)_\d{6}_assignsubmission_onlinetext_", file)[0],"_comentari")
                 os.rename(file,renamedFile)
